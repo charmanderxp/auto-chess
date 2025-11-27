@@ -15,40 +15,22 @@ interface UnitMeshProps {
   floatingText: string | null;
 }
 
-// Arena corner pillar with subtle holographic animation
+// Arena corner pillar using shared GLB model (cloned per corner) with subtle rotation
 const ArenaPillar: React.FC<{ position: [number, number, number] }> = ({ position }) => {
   const groupRef = useRef<THREE.Group>(null);
+  const { scene } = useGLTF('/models/arena/Arena-Pillar.glb');
+  const cloned = useMemo(() => scene.clone(), [scene]);
 
   useFrame((state) => {
     if (!groupRef.current) return;
     const t = state.clock.getElapsedTime();
-    // Slow rotation for hologram ring
-    groupRef.current.rotation.y = t * 0.3;
+    groupRef.current.rotation.y = t * 0.25;
   });
 
   return (
     <group ref={groupRef} position={position}>
-      {/* Main pillar */}
-      <mesh position={[0, 1.2, 0]}>
-        <cylinderGeometry args={[0.12, 0.18, 2.4, 12]} />
-        <meshStandardMaterial
-          color="#0f172a"
-          emissive="#22d3ee"
-          emissiveIntensity={0.4}
-          metalness={0.6}
-          roughness={0.25}
-        />
-      </mesh>
-      {/* Floating ring */}
-      <mesh position={[0, 2.1, 0]} rotation={[Math.PI / 2, 0, 0]}>
-        <torusGeometry args={[0.4, 0.03, 12, 48]} />
-        <meshBasicMaterial color="#22d3ee" transparent opacity={0.7} />
-      </mesh>
-      {/* Ground halo */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.02, 0]}>
-        <ringGeometry args={[0.35, 0.6, 40]} />
-        <meshBasicMaterial color="#0ea5e9" transparent opacity={0.4} />
-      </mesh>
+      {/* Taller pillar without increasing base width */}
+      <primitive object={cloned} scale={[1, 3, 1]} />
     </group>
   );
 };
