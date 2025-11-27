@@ -4,7 +4,7 @@ Private auto-chess prototype where:
 
 - **Loadouts (4 hero + 4 item IDs) are encrypted with FHE** on Sepolia (Zama FHEVM).
 - Combat logic runs **off-chain** (frontend), and P1 submits a **plain signed result** on-chain.
-- Both P1 and P2 read the **same on-chain result**, while the 3D scene is purely for **replay and visualization**.
+- Both P1 and P2 read the **same on-chain result**, while the 3D scene is purely for **replay and visualization**
 
 The system includes:
 
