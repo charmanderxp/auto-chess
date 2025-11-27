@@ -1,5 +1,5 @@
 import { ethers, BrowserProvider, Contract } from 'ethers';
-import { createEncryptedInput, createEncryptedResult, getFheInstance, reencrypt } from '../utils/fhevm';
+import { createEncryptedInput, getFheInstance } from '../utils/fhevm';
 import { Loadout } from '../types';
 import deploymentData from '../deployments/AutoChessPrivate.json';
 
