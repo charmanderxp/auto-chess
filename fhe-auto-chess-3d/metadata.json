@@ -1,0 +1,5 @@
+{
+  "name": "FHE Auto-Chess 3D",
+  "description": "A privacy-preserving auto-battler POC using simulated FHEVM logic and 3D visualization.",
+  "requestFramePermissions": []
+}
