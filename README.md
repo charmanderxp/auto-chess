@@ -75,6 +75,8 @@ After deployment, if the contract address changes, make sure to:
 
 Main entry: `fhe-auto-chess-3d/App.tsx`
 
+- **Live demo (Vercel)**: [https://auto-chess-eosin.vercel.app/](https://auto-chess-eosin.vercel.app/)
+
 ### Install & run
 
 ```bash
